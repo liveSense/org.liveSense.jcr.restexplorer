@@ -1,0 +1,3 @@
+cq_put $1
+cq_jspc $1
+xpopup "done"

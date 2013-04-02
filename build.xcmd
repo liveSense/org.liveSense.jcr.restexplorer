@@ -1,0 +1,11 @@
+case $1 in
+	deploy)
+		lf libs | doit cq_put
+		;;
+	install)
+		xmake -Dmaven.test.skip=true package sling:install
+		;;
+	*)
+		xmake -Dmaven.test.skip=true compile
+		;;
+esac
