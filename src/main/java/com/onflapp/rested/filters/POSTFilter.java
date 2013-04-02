@@ -95,6 +95,8 @@ class POSTWrapper extends SlingHttpServletRequestWrapper {
 				mypars.setParameters(key, val);
 			}
 		}
+
+		System.out.println (">>>" + mypars);
 	}
 
 	public String getParameter(String name) {

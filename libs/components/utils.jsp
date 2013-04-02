@@ -22,7 +22,6 @@ String getRequestPath(SlingHttpServletRequest slingRequest) throws Exception {
 
 String getRequestSelectorExtension(SlingHttpServletRequest slingRequest) throws Exception {
 	String path = getRequestPath(slingRequest);
-	String a[] = slingRequest.getRequestPathInfo().getSuffix();
 	int i = path.indexOf ('.');
 	if (i == -1) return "";
 	else return path.substring(i+1);

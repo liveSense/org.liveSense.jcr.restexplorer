@@ -20,10 +20,12 @@
 	String type = "unknown";
 	if (currentNode.hasProperty("jcr:content/jcr:mimeType")) {
 		String mimetype = currentNode.getProperty("jcr:content/jcr:mimeType").getString();
-		type = mimetype.substring(0,mimetype.indexOf ('/'));
+		if      (mimetype.equalsIgnoreCase("plain/text")) type = "text";
+		else if (mimetype.equalsIgnoreCase("text/plain")) type = "text";
 	}
 %><!DOCTYPE html>
 <html>
+<%= type %>
 	<sling:include resource="<%=resource%>" resourceType="components/head" replaceSelectors="edit" />
 	<body>
 		<sling:include resource="<%=resource%>" resourceType="components/breadcrumb" replaceSelectors="edit"/>
@@ -33,7 +35,7 @@
 				<sling:include resource="<%=resource%>" resourceType="components/editor/text"/>
 			</DIV>
 		<% } else { %>
-			<IFRAME width="100%" src="<%=currentNode.getPath()%>"></IFRAME>
+			<!-- IFRAME width="100%" src="<%=currentNode.getPath()%>"></IFRAME -->
 		<% } %>
 	</body>
 </html>
