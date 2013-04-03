@@ -14,27 +14,8 @@
 									org.apache.sling.api.*,
 									org.apache.sling.api.resource.*,
                   utils.*" 
-%><%
-%><%@ taglib prefix="sling" uri="http://sling.apache.org/taglibs/sling/1.0" %><%
-%><%!
-
-String getRequestPath(SlingHttpServletRequest slingRequest) throws Exception {
-	URL u = new URL (slingRequest.getRequestURL().toString());
-	String suffix = slingRequest.getRequestPathInfo().getSuffix();
-	String path = u.getPath();
-
-	if (suffix != null) return path.substring(0, path.length() - suffix.length());
-	else return path;
-}
-
-String getRequestSelectorExtension(SlingHttpServletRequest slingRequest) throws Exception {
-	String path = getRequestPath(slingRequest);
-	int i = path.indexOf ('.');
-	if (i == -1) return "";
-	else return path.substring(i+1);
-}
-
-%><%
+%><%@ include file="/libs/components/utils.jsp" %>
+<%@ taglib prefix="sling" uri="http://sling.apache.org/taglibs/sling/1.0" %><%
 %><sling:defineObjects /><%
 %><%
 

@@ -18,7 +18,7 @@
     <title>Bootstrap 101 Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <!-- link href="/libs/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen" -->
+    <link href="/libs/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
     <!--script src="/libs/jquery/js/jquery.js"></script -->
     <!--script src="/libs/bootstrap/js/bootstrap.js"></script -->
 		<style>
