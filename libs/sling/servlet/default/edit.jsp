@@ -24,14 +24,13 @@
 			<sling:include resource="<%=resource%>" resourceType="components/breadcrumb"/>
 
 			<a class="btn" href="<%=resource.getPath() + ".properties.html"%>">properties</a>
-			<!-- sling:include resource="<%=resource%>" resourceType="components/properties"/ -->
+			<a class="btn" href="<%=resource.getPath() + ".create.html"%>">new</a>
 
 			<% if (currentNode.hasNodes()) { %>
 			<sling:include resource="<%=resource%>" resourceType="components/pathlist"/>
 			<% } else { %>
 			<h3>this node has no children</h3>
 			<% } %>
-      <sling:include resource="<%=resource%>" resourceType="components/createnode"/>
 		</div>
 	</body>
 </html>

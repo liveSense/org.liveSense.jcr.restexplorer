@@ -25,8 +25,6 @@
 	else newContent += "/";
 %>
 
-<div class="well">
-
 <FORM ID="CREATEFORM" METHOD="POST" ACTION="<%= newContent %>" ENCTYPE="MULTIPART/FORM-DATA">
 	<fieldset>
 	<legend>Add New Node</legend>
@@ -55,5 +53,3 @@
 		<INPUT TYPE="HIDDEN" NAME=":redirect" VALUE="<%=slingRequest.getRequestURL()%>" />
 	</fieldset>
 </FORM>
-
-</div>

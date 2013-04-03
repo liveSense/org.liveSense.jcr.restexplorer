@@ -24,7 +24,7 @@
 						<a href="/">Home</a>
 					</li>
 					<li class="">
-						<a href="/system/sling/selector/login">Login</a>
+						<a href="<%= resource.getPath()+".authenticate.html"%>">Login</a>
 					</li>
 					<li class="">
 						<a href="/system/console">Console</a>
