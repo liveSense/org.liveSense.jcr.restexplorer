@@ -25,7 +25,6 @@ String suffix = slingRequest.getRequestPathInfo().getSuffix();
 
 %>
 
-<FORM ID="PATHSFORM" METHOD="POST" ACTION="<%=currentNode.getPath()%>" ENCTYPE="MULTIPART/FORM-DATA">
 	<table class="table table-condensed pathlist">
 		<thead>
 			<th class="nodetype"></th>
@@ -56,9 +55,9 @@ String suffix = slingRequest.getRequestPathInfo().getSuffix();
 				<td>
 					<div>
 					<span class="control-toolba">
-						<a class="btn" href="<%=node.getPath()+".moveto.html/"%>"><i class="icon-arrow-right icon-white">move</i></a>
-						<a class="btn" href="<%=node.getPath()+".copyto.html/"%>"><i class="icon-plus icon-white">copy</i></a>
-						<BUTTON class="btn" TYPE="SUBMIT" NAME=":applyTo" VALUE="<%=node.getPath()%>"><i class="icon-trash icon-white">x</i></BUTTON>
+						<a class="btn" href="<%=node.getPath()+".moveto.html/"%>"><i class="icon-arrow-right icon-white"></i></a>
+						<a class="btn" href="<%=node.getPath()+".copyto.html/"%>"><i class="icon-plus icon-white"></i></a>
+						<a class="btn" href="<%=node.getPath()+".remove.html"%>"><i class="icon-trash icon-white"></i></a>
 					</span>
 					</div>
 				</td>
@@ -74,7 +73,4 @@ String suffix = slingRequest.getRequestPathInfo().getSuffix();
 	%>
 		</tbody>
 	</table>
-	<INPUT TYPE="HIDDEN" NAME=":operation" VALUE="delete" />
-	<INPUT TYPE="HIDDEN" NAME=":redirect" VALUE="<%=currentNode.getPath()%>.edit.html" />
-</FORM>
 
