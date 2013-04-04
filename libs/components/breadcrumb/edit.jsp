@@ -12,24 +12,21 @@
 									javax.jcr.*,
 									java.util.*,
 									org.apache.sling.api.resource.*,
-                  utils.*" 
+                  utils.*"
 %><%
 %><%@ taglib prefix="sling" uri="http://sling.apache.org/taglibs/sling/1.0" %><%
 %><sling:defineObjects /><%
+%><%
+	
+	String parentPath = "/";
+	if (resource.getParent() != null) parentPath = resource.getParent().getPath();
 %>
 
-<FORM ID="DELETE_NODE_FORM" METHOD="POST" ACTION="<%=resource.getPath() %>" ENCTYPE="MULTIPART/FORM-DATA">
-	<%
-		String parentPath = "/";
-		if (resource.getParent() != null) parentPath = resource.getParent().getPath();
-	%>
-	<INPUT TYPE="HIDDEN" NAME=":redirect" VALUE="<%=parentPath%>.edit.html" />
-</FORM>
-
-<form id="RENAME_NODE_FORM" method="POST" action="<%=resource.getPath() %>" enctype="MULTIPART/FORM-DATA">
+<form class="form-inline" id="RENAME_NODE_FORM" method="POST" action="<%=resource.getPath() %>" enctype="MULTIPART/FORM-DATA">
 	<input type="hidden" name=":redirect" value="<%=parentPath%>.edit.html" />
 
 	<ul class="breadcrumb">
+<li><i class="icon-home"></i></li>
 	<%
 
 		Vector<Resource> v = new Vector<Resource>();
@@ -46,23 +43,23 @@
 			
 			if (path.equals("/")) title = "root";
 			if (r != resource) {
-				%><li style="vertical-align: middle;height:30px"><A href="<%=path%>.edit.html"><%=title%></A><span class="divider"></span></li><%
+				%><li><a href="<%=path%>.edit.html"><%=title%></a><span class="divider">/</span></li><%
 			}
 		}
 
 		if (resource.getPath().equals("/")) { %>
-			<li style="vertical-align: middle;height:30px"><A href="/.edit.html">root</A></li>
+			<li><a href="/.edit.html">root</a></li>
 		<% } else { %>
 			<li>
-			<span class="controls-dynami">
-				<INPUT TYPE="TEXT" NAME="new_node_name" VALUE="<%=resource.getName()%>" />
+				<div class="btn-group">
+					<input type="text" name="new_node_name" value="<%=resource.getName()%>" />
 
-				<BUTTON class="btn" TYPE="SUBMIT"><i class="icon-ok icon-white">rename</i></BUTTON>
-				<BUTTON class="btn" TYPE="SUBMIT" NAME=":operation" VALUE="delete" FORM="DELETE_NODE_FORM"><i class="icon-trash icon-white">x</i></BUTTON>
+					<button class="btn btn-success" type="submit"><i class="icon-ok icon-white"></i></button>
+					<a href="<%=resource.getPath()+".remove.html"%>" class="btn btn-danger"><i class="icon-trash icon-white"></i></a>
 
-				<input type="hidden" name=":dest@ValueFrom" value="new_node_name" />
-				<input type="hidden" name=":operation" value="move" />
-			</span>
+					<input type="hidden" name=":dest@ValueFrom" value="new_node_name" />
+					<input type="hidden" name=":operation" value="move" />
+				</div>
 			</li>
 		<% } %>
 	</ul>

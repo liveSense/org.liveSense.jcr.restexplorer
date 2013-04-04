@@ -22,27 +22,24 @@
 <html>
 	<sling:include resource="<%=resource%>" resourceType="components/head" replaceSelectors="edit"/>
 	<body style="background-color:gray">
-<FORM ID="PATHSFORM" METHOD="POST" ACTION="<%=resource.getPath()%>" ENCTYPE="MULTIPART/FORM-DATA">
-    <div class="container-fluid">
-
-	<div class="container-fluid">
+		<form id="PATHSFORM" method="POST" action="<%=resource.getPath()%>" enctype="MULTIPART/FORM-DATA">
+			<div class="container-fluid">
 				<div class="modal">
-		<div class="modal-header">
-			<h3>Remove Node <a href="#"><%= resource.getPath() %></a></h3>
-  </div>
+					<div class="modal-header">
+						<h3>Remove Node <a href="#"><%= resource.getPath() %></a></h3>
+					</div>
 
-  <div class="modal-body">
-
-	</div>
-  <div class="modal-footer">
-		<INPUT TYPE="HIDDEN" NAME=":operation" VALUE="delete" />
-		<INPUT TYPE="HIDDEN" NAME=":redirect" VALUE="<%=currentNode.getPath()%>.edit.html" />
-    <a href="<%= parentPath+".edit.html" %>" class="btn">Cancel</a>
-		<BUTTON class="btn" TYPE="SUBMIT" NAME=":applyTo" VALUE="<%=resource.getPath()%>">Remove</BUTTON>
-  </div>
-
-		</div>
-		</div>
-</FORM>
+					<div class="modal-body">
+					<p>Are you sure you want to remove this node?
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" name=":operation" value="delete" />
+						<input type="hidden" name=":redirect" value="<%=currentNode.getPath()%>.edit.html" />
+						<a href="<%= parentPath+".edit.html" %>" class="btn">Cancel</a>
+						<BUTTON class="btn btn-danger" TYPE="SUBMIT" NAME=":applyTo" VALUE="<%=resource.getPath()%>">Remove</BUTTON>
+					</div>
+				</div>
+			</div>
+		</form>
 	</body>
 </html>

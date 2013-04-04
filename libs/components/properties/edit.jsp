@@ -34,7 +34,7 @@
 <FORM ID="EDIT_PROPERTIES_FORM" class="form-horizontal" METHOD="POST" ACTION="<%= content %>" ENCTYPE="MULTIPART/FORM-DATA">
 	<INPUT TYPE="HIDDEN" NAME=":redirect" VALUE="<%=slingRequest.getRequestURL()%>" />
 		<fieldset>
-		<legend>Properties</legend>
+		<legend>Existing Properties</legend>
 		<% 
 			if (properties != null) {
 				for (;properties.hasNext();) {
@@ -57,8 +57,10 @@
 		 <div class="controls">
 				<INPUT id="<%=name%>" TYPE="TEXT" NAME="<%=name%>" VALUE="<%=value%>" />
 				<span class="help-inline">
+					<div class="btn-group">
 					<BUTTON class="btn btn-success" TYPE="SUBMIT"><i class="icon-ok icon-white"></i></BUTTON>
 					<BUTTON class="btn btn-danger" TYPE="SUBMIT" NAME="<%=name%>" VALUE="" FORM="DELETE_PROPERTY_FORM"><i class="icon-trash icon-white"></i></BUTTON>
+					</div>
 				</span>
 		 </div>
 		</div>

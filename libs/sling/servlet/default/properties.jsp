@@ -24,7 +24,7 @@
 	<div class="container-fluid">
 				<div class="modal">
 		<div class="modal-header">
-			<h3>Edit Properties <a href="#"><%= resource.getPath() %></a></h3>
+			<h3>Edit Properties</a></h3>
   </div>
 
   <div class="modal-body">
@@ -33,7 +33,7 @@
 			<sling:include resource="<%=resource%>" resourceType="components/properties" replaceSelectors="edit"/>
 	</div>
   <div class="modal-footer">
-    <a href="<%= resource.getPath() + ".edit.html" %>" class="btn">Ok</a>
+    <a href="<%= resource.getPath() + ".edit.html" %>" class="btn btn-primary">Dismiss</a>
   </div>
 
 		</div>

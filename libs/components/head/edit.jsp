@@ -15,12 +15,27 @@
 %><sling:defineObjects /><%
 %>
 	<head>
-    <title>Bootstrap 101 Template</title>
+    <title>RESTed::<%=resource.getPath()%></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="/libs/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
     <!--script src="/libs/jquery/js/jquery.js"></script -->
     <!--script src="/libs/bootstrap/js/bootstrap.js"></script -->
 		<style>
+.subnavbar .breadcrumb {
+	border: solid 1px lightgray;
+
+	-webkit-border-radius: 0;
+	   -moz-border-radius: 0;
+	       -border-radius: 0;
+
+  -webkit-box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.2);
+     -moz-box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+			.breadcrumb input {
+				margin-bottom: 0px;
+			}
 		</style>
 	</head>

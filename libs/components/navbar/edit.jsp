@@ -29,6 +29,9 @@
 					<li class="">
 						<a href="/system/console">Console</a>
 					</li>
+					<li>
+						<a href="#"><i class="icon-user icon-white"></i></a>
+					</li>
 				</ul>
 			</div>
 		</div>

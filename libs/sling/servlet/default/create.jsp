@@ -33,7 +33,7 @@
 			<sling:include resource="<%=resource%>" resourceType="components/createnode" replaceSelectors="edit"/>
 	</div>
   <div class="modal-footer">
-    <a href="<%= resource.getPath() + ".edit.html" %>" class="btn">Ok</a>
+    <a href="<%= resource.getPath() + ".edit.html" %>" class="btn btn-primary">Dismiss</a>
   </div>
 
 		</div>

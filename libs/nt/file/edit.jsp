@@ -33,8 +33,10 @@
 	<sling:include resource="<%=resource%>" resourceType="components/head" replaceSelectors="edit" />
 	<body>
 		<sling:include resource="<%=resource%>" resourceType="components/navbar" replaceSelectors="edit"/>
-    <div class="container-fluid">
+		<div class="subnavbar">
 			<sling:include resource="<%=resource%>" resourceType="components/breadcrumb" replaceSelectors="edit"/>
+		</div>
+    <div class="container-fluid">
 
 			<a class="btn" href="<%=resource.getPath() + "/_jcr_content.edit.html"%>">view jcr:content</a>
 

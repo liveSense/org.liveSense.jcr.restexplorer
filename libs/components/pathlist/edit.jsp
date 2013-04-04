@@ -53,12 +53,10 @@ String suffix = slingRequest.getRequestPathInfo().getSuffix();
 				<td><%=type%></td>
 				<td><%=rtype%></td>
 				<td>
-					<div>
-					<span class="control-toolba">
-						<a class="btn" href="<%=node.getPath()+".moveto.html/"%>"><i class="icon-arrow-right icon-white"></i></a>
-						<a class="btn" href="<%=node.getPath()+".copyto.html/"%>"><i class="icon-plus icon-white"></i></a>
-						<a class="btn" href="<%=node.getPath()+".remove.html"%>"><i class="icon-trash icon-white"></i></a>
-					</span>
+					<div class="btn-group">
+						<a class="btn btn-mini" href="<%=node.getPath()+".moveto.html/"%>"><i class="icon-arrow-right icon-white"></i></a>
+						<a class="btn btn-mini" href="<%=node.getPath()+".copyto.html/"%>"><i class="icon-plus icon-white"></i></a>
+						<a class="btn btn-mini" href="<%=node.getPath()+".remove.html"%>"><i class="icon-trash icon-white"></i></a>
 					</div>
 				</td>
 			</tr>

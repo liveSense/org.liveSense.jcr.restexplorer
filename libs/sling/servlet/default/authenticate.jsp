@@ -19,35 +19,39 @@
 <html>
 	<sling:include resource="<%=resource%>" resourceType="components/head" replaceSelectors="edit"/>
 	<body style="background-color:gray">
-    <div class="container-fluid">
-
-	<div class="container-fluid">
+		<div class="container-fluid">
+			<form method="post" action="/j_security_check" enctype="MULTIPART/FORM-DATA" accept-charset="UTF-8" class="form-horizontal">
 				<div class="modal">
-		<div class="modal-header">
-			<h3>Login <a href="#"><%= resource.getPath() %></a></h3>
-  </div>
+					<div class="modal-header">
+						<h3>Login <a href="#"><%= resource.getPath() %></a></h3>
+						<a href="<%= resource.getPath() + ".edit.html" %>" class="btn">back</a>
+					</div>
 
-  <div class="modal-body">
+					<div class="modal-body">
+							<input type="hidden" name="_charset_" value="UTF-8">
+							<input type="hidden" name="resource" value="<%= resource.getPath() %>.edit.html">
+							<input type="hidden" name="selectedAuthType" value="form">
 
+							<div class="control-group">
+								<label class="control-label" for="j_username">name</label>
+								<div class="controls">
+									<input id="j_username" name="j_username" type="text" accesskey="u">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="j_password">password</label>
+								<div class="controls">
+									<input id="j_password" name="j_password" type="password" accesskey="p">
+								</div>
+							</div>
+					</div>
 
-<form method="post" action="/j_security_check" enctype="MULTIPART/FORM-DATA" accept-charset="UTF-8">
-
-	<input type="hidden" name="_charset_" value="UTF-8">
-	<input type="hidden" name="resource" value="<%= resource.getPath() %>.edit.html">
-	<input type="hidden" name="selectedAuthType" value="form">
-	<input id="j_username" name="j_username" type="text" accesskey="u">
-	<input id="j_password" name="j_password" type="password" accesskey="p">
-	<button id="login" accesskey="l" class="btn" type="submit"><u>L</u>ogin</button>
-
-</form>
-
-	</div>
-  <div class="modal-footer">
-    <a href="<%= resource.getPath() + ".edit.html" %>" class="btn">Ok</a>
-  </div>
-
-		</div>
-		</div>
+					<div class="modal-footer">
+						<a class="btn" href="system/sling/logout.html">Logout</a>
+						<button class="btn btn-primary" type="submit">Login</button>
+					</div>
+				</div>
+			</form>
 		</div>
 	</body>
 </html>

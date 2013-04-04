@@ -20,16 +20,35 @@
 	<sling:include resource="<%=resource%>" resourceType="components/head"/>
 	<body>
 		<sling:include resource="<%=resource%>" resourceType="components/navbar"/>
-    <div class="container-fluid">
+		<div class="subnavbar">
 			<sling:include resource="<%=resource%>" resourceType="components/breadcrumb"/>
+		</div>
+    <div class="container-fluid">
 
-			<a class="btn" href="<%=resource.getPath() + ".properties.html"%>">properties</a>
-			<a class="btn" href="<%=resource.getPath() + ".create.html"%>">new</a>
+			<div class="btn-toolbar">
+				<form class="form-search form-inline">
+					<div class="btn-group">
+						<a class="btn" href="<%=resource.getPath() + ".create.html"%>"><i class=" icon-plus"></i> new</a>
+						<a class="btn" href="<%=resource.getPath() + ".properties.html"%>"><i class="icon-edit"></i> properties</a>
+					</div>
+					<span class="pull-right">
+					<div class="input-append">
+						<input type="text" name="q" class="input-small search-query">
+						<button class="btn" type="submit"><i class="icon-search"></i></button>
+					</div>
+					</span>
+				</form>
+			</div>
 
 			<% if (currentNode.hasNodes()) { %>
 			<sling:include resource="<%=resource%>" resourceType="components/pathlist"/>
 			<% } else { %>
-			<h3>this node has no children</h3>
+			<div class="alert alert-info">
+				<a href="#" class="close"><i class="icon-circle-arrow-left"></i></a>
+				<p>
+				<h4 class="text-center">this node has no children</h4>
+				<p>
+			</div>
 			<% } %>
 		</div>
 	</body>
