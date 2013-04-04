@@ -28,19 +28,34 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.servlets.post.AbstractPostResponse;
 import org.apache.sling.servlets.post.PostResponse;
 import org.apache.sling.servlets.post.PostResponseCreator;
+import org.apache.sling.servlets.post.HtmlResponse;
 
-class MyPOSTResponse extends AbstractPostResponse {
+class MyPOSTResponse extends HtmlResponse {
 	private SlingHttpServletRequest request;
 	public MyPOSTResponse (SlingHttpServletRequest req) {
+		super();
 		request = req;
-	}
-	public void onChange (String type, String... arguments) {
-		System.out.println (">>>" + type);
 	}
 
 	@Override
 	protected void doSend (HttpServletResponse response) throws IOException {
-		if (isSuccessful () == false) {
+		String errorpage = request.getParameter(":errorpage");
+		if (isSuccessful () == false && errorpage != null) { //we are interested in errors only
+			String msg = getError().getMessage();
+			response.sendRedirect(errorpage + "?error=" + java.net.URLEncoder.encode(msg, "UTF-8"));
+			/*
+			javax.servlet.RequestDispatcher disp = request.getRequestDispatcher("/.edit.html");
+			try {
+				((POSTWrapper)request).setM("GET");
+				disp.forward (request, response);
+			}
+			catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			*/
+		}
+		else {
+			super.doSend (response);
 		}
 		/*
 		String forward = request.getParameter(":forward");
@@ -52,25 +67,6 @@ class MyPOSTResponse extends AbstractPostResponse {
 		}
 		*/
 	}
-
-	/*
-		try {
-			Resource res = request.getResourceResolver().getResource(forward);
-
-		System.out.println (">>>" + forward + ":" + res);
-			javax.servlet.RequestDispatcher disp = request.getRequestDispatcher (res);
-			disp.forward(request, response);
-		}
-		catch (ServletException ex) {
-			
-		}
-		System.out.println ("send:" + isSuccessful ());
-		response.setContentType ("text/html");
-		response.setCharacterEncoding ("UTF-8");
-
-		response.getWriter().write ("Thanks!");
-		response.getWriter().flush();
-		*/
 }
 
 @Component
@@ -78,7 +74,7 @@ class MyPOSTResponse extends AbstractPostResponse {
 public class MyResponse implements PostResponseCreator {
 
 	public PostResponse createPostResponse (SlingHttpServletRequest req) {
-		return null;//new MyPOSTResponse (req);
+		return new MyPOSTResponse (req);
 	}
 }
 

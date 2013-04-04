@@ -39,6 +39,7 @@
 		</select>
 
 		<INPUT TYPE="HIDDEN" NAME=":redirect" VALUE="<%=slingRequest.getRequestURL()%>" />
+		<INPUT TYPE="HIDDEN" NAME=":errorpage" VALUE="<%=slingRequest.getRequestURL()%>" />
 
 		<BUTTON TYPE="SUBMIT">Create Node</BUTTON>
 	</fieldset>
@@ -51,5 +52,21 @@
 
 		<BUTTON TYPE="SUBMIT">Upload File</BUTTON>
 		<INPUT TYPE="HIDDEN" NAME=":redirect" VALUE="<%=slingRequest.getRequestURL()%>" />
+		<INPUT TYPE="HIDDEN" NAME=":errorpage" VALUE="<%=slingRequest.getRequestURL()%>" />
 	</fieldset>
 </FORM>
+
+<%
+	String error = request.getParameter("error");
+	if (error != null) {
+		%>
+		<div class="alert alert-error">
+		<a href="<%=slingRequest.getRequestURL()%>" class="close">&times;</a>
+		<strong>Error while saving data!</strong>
+		<%= error %>
+		<p>
+		You may have to <a href=#">login</a> before making any changes.
+		</div>
+		<%
+	}
+%>

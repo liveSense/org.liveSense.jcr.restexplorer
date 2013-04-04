@@ -29,10 +29,12 @@
 %>
 <FORM ID="DELETE_PROPERTY_FORM" METHOD="POST" ACTION="<%= content %>" ENCTYPE="MULTIPART/FORM-DATA">
 	<INPUT TYPE="HIDDEN" NAME=":redirect" VALUE="<%=slingRequest.getRequestURL()%>" />
+	<INPUT TYPE="HIDDEN" NAME=":errorpage" VALUE="<%=slingRequest.getRequestURL()%>" />
 </FORM>
 
 <FORM ID="EDIT_PROPERTIES_FORM" class="form-horizontal" METHOD="POST" ACTION="<%= content %>" ENCTYPE="MULTIPART/FORM-DATA">
 	<INPUT TYPE="HIDDEN" NAME=":redirect" VALUE="<%=slingRequest.getRequestURL()%>" />
+	<INPUT TYPE="HIDDEN" NAME=":errorpage" VALUE="<%=slingRequest.getRequestURL()%>" />
 		<fieldset>
 		<legend>Existing Properties</legend>
 		<% 
@@ -76,9 +78,25 @@
 		<legend>Add New Property</legend>
 		<div class="control-group">
 			<INPUT TYPE="HIDDEN" NAME=":redirect" VALUE="<%=slingRequest.getRequestURL()%>" />
+			<INPUT TYPE="HIDDEN" NAME=":errorpage" VALUE="<%=slingRequest.getRequestURL()%>" />
 			<INPUT class="input-medium" TYPE="TEXT" placeholder="new property name" NAME=":propery_name" VALUE="" required/>
 			<INPUT style="margin-left:12px" TYPE="TEXT" placeholder="value" NAME=":propery_name@NameFrom" VALUE=""/>
 			<BUTTON class="btn btn-success" TYPE="SUBMIT"><i class="icon-ok icon-white"></i></BUTTON>
 		</div>
 	</fieldset>
 </FORM>
+
+<%
+	String error = request.getParameter("error");
+	if (error != null) {
+		%>
+		<div class="alert alert-error">
+		<a href="<%=slingRequest.getRequestURL()%>" class="close">&times;</a>
+		<strong>Error while saving data!</strong>
+		<%= error %>
+		<p>
+		You may have to <a href=#">login</a> before making any changes.
+		</div>
+		<%
+	}
+%>

@@ -31,12 +31,27 @@
 
 					<div class="modal-body">
 					<p>Are you sure you want to remove this node?
+<%
+	String error = request.getParameter("error");
+	if (error != null) {
+		%>
+		<div class="alert alert-error">
+		<a href="<%=slingRequest.getRequestURL()%>" class="close">&times;</a>
+		<strong>Error while saving data!</strong>
+		<%= error %>
+		<p>
+		You may have to <a href=#">login</a> before making any changes.
+		</div>
+		<%
+	}
+%>
 					</div>
 					<div class="modal-footer">
 						<input type="hidden" name=":operation" value="delete" />
 						<input type="hidden" name=":redirect" value="<%=currentNode.getPath()%>.edit.html" />
+						<input type="hidden" name=":errorpage" value="<%=slingRequest.getRequestURL()%>" />
 						<a href="<%= parentPath+".edit.html" %>" class="btn">Cancel</a>
-						<BUTTON class="btn btn-danger" TYPE="SUBMIT" NAME=":applyTo" VALUE="<%=resource.getPath()%>">Remove</BUTTON>
+						<button class="btn btn-danger" type="submit" name=":applyTo" value="<%=resource.getPath()%>">Remove</button>
 					</div>
 				</div>
 			</div>
