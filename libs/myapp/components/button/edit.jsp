@@ -14,12 +14,8 @@
                   utils.*" 
 %><%
 %><%@ taglib prefix="sling" uri="http://sling.apache.org/taglibs/sling/1.0" %><%
-%><sling:defineObjects />
-<%
-
-for (Resource res : resource.getChildren()) {
-	
-	%><%=res%><sling:include resource="<%=res %>" /><%
-}
-
+%><sling:defineObjects /><%
+	String label = (resource.adaptTo(ValueMap.class)).get("label",currentNode.getName());
 %>
+<a href="<%=resource.getPath()+".properties.html"%>">props</a>
+<button class="btn btn-large btn-primary" type="button"><%= label %></button>

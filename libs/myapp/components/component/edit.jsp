@@ -15,11 +15,5 @@
 %><%
 %><%@ taglib prefix="sling" uri="http://sling.apache.org/taglibs/sling/1.0" %><%
 %><sling:defineObjects />
-<%
-
-for (Resource res : resource.getChildren()) {
-	
-	%><%=res%><sling:include resource="<%=res %>" /><%
-}
-
-%>
+<a href="<%=resource.getPath()+".properties.html"%>">props</a>
+<div>component</div>

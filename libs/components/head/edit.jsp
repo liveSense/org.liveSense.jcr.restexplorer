@@ -22,6 +22,17 @@
     <!--script src="/libs/jquery/js/jquery.js"></script -->
     <!--script src="/libs/bootstrap/js/bootstrap.js"></script -->
 		<style>
+		.component {
+			cursor: move;
+		}
+
+		[draggable] {
+			-moz-user-select: none;
+			-khtml-user-select: none;
+			-webkit-user-select: none;
+			user-select: none;
+		}
+
 .subnavbar .breadcrumb {
 	border: solid 1px lightgray;
 

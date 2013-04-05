@@ -18,7 +18,7 @@
 %><sling:defineObjects /><!DOCTYPE html>
 <html>
   <head>
-    <title><%= properties.get("title", "untitled")%></title>
+    <title><%=(resource.adaptTo(ValueMap.class)).get("title","untitled")%></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="/libs/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
@@ -32,6 +32,7 @@
 
   </head>
 	<body>
+	<a href="<%=resource.getPath()+".properties.html"%>">props</a>
 	<sling:include resource="<%=resource%>" resourceType="myapp/components/container"/>
 	<script>
 

@@ -15,11 +15,13 @@
 %><%
 %><%@ taglib prefix="sling" uri="http://sling.apache.org/taglibs/sling/1.0" %><%
 %><sling:defineObjects />
+<div class="container data-node="<%=resource%>">
+<a href="<%=resource.getPath()+".create.html"%>">add</a>
 <%
 
 for (Resource res : resource.getChildren()) {
-	
 	%><%=res%><sling:include resource="<%=res %>" /><%
 }
 
 %>
+</div>
