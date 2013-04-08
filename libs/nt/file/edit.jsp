@@ -26,7 +26,10 @@
 		else if (mimetype.equalsIgnoreCase("text/plain")) type = "text";
 		else if (mimetype.equalsIgnoreCase("text/html")) type = "text";
 		else if (path.endsWith(".jsp")) type = "text";
-		else if (path.endsWith(".html")) type = "text";
+		else if (path.endsWith(".html"))type = "text";
+		else if (path.endsWith(".css")) type = "text";
+		else if (path.endsWith(".js"))  type = "text";
+		else if (path.endsWith(".png")) type = "image";
 	}
 %><!DOCTYPE html>
 <html>
@@ -38,11 +41,20 @@
 		</div>
     <div class="container-fluid">
 
-			<a class="btn" href="<%=resource.getPath() + "/_jcr_content.edit.html"%>">view jcr:content</a>
+			<div class="btn-toolbar">
+				<div class="btn-group">
+					<a class="btn" href="<%=resource.getPath() + "/_jcr_content.edit.html"%>"><i class="icon-chevron-right"></i> view jcr:content</a>
+					<a class="btn" href="<%=resource.getPath() + "/_jcr_content.properties.html"%>"><i class="icon-edit"></i> properties</a>
+				</div>
+			</div>
 
 			<% if ("text".equalsIgnoreCase(type)) { %>
 				<DIV style="width:100%">
 					<sling:include resource="<%=resource%>" resourceType="components/editor/text"/>
+				</DIV>
+			<% } else if ("image".equalsIgnoreCase(type)) { %>
+				<DIV style="width:100%">
+					<img src="<%=resource.getPath()%>"></img>
 				</DIV>
 			<% } else { %>
 				<!-- IFRAME width="100%" src="<%=currentNode.getPath()%>"></IFRAME -->

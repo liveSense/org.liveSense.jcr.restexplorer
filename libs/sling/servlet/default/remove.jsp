@@ -51,7 +51,7 @@
 						<input type="hidden" name=":redirect" value="<%=currentNode.getPath()%>.edit.html" />
 						<input type="hidden" name=":errorpage" value="<%=slingRequest.getRequestURL()%>" />
 						<a href="<%= parentPath+".edit.html" %>" class="btn">Cancel</a>
-						<button class="btn btn-danger" type="submit" name=":applyTo" value="<%=resource.getPath()%>">Remove</button>
+						<button class="btn btn-danger" type="submit" name=":applyTo" value="<%=resource.getPath()%>"><i class="icon-trash icon-white"></i> Remove</button>
 					</div>
 				</div>
 			</div>
