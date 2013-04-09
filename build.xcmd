@@ -1,5 +1,7 @@
 case $1 in
 	deploy)
+		cd src/main/resources/initial-content
+		lf apps | doit cq_put
 		lf libs | doit cq_put
 		;;
 	install)

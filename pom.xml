@@ -30,9 +30,9 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
-    <name>Track Sling Include Processing</name>
+    <name>RESTed</name>
     <description>
-    Gather information about sling processing and store it in a HTML comment tags
+		REST-full node editor
     </description>
 
     <!--scm>
@@ -42,17 +42,6 @@
     </scm-->
 
     <build>
-        <resources>
-            <!-- define the resources that will go into the package -->
-            <resource>
-                <directory>${basedir}/libs</directory>
-                <excludes>
-                    <!-- exclude .vlt control files in the package -->
-                    <exclude>**/.vlt</exclude>
-                    <exclude>**/.vltignore</exclude>
-                </excludes>
-            </resource>
-        </resources>
     
         <plugins>
             <plugin>
@@ -69,6 +58,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
+            <Sling-Initial-Content>initial-content</Sling-Initial-Content>
                     </instructions>
                 </configuration>
             </plugin>
