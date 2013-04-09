@@ -25,36 +25,55 @@
 	else newContent += "/";
 %>
 
-<FORM ID="CREATEFORM" METHOD="POST" ACTION="<%= newContent %>" ENCTYPE="MULTIPART/FORM-DATA">
+<form ID="CREATEFORM" class="form-horizontal" method="post" action="<%= newContent %>" enctype="multipart/form-data">
 	<fieldset>
 	<legend>Add New Node</legend>
-		<input type="text" name=":name" value="" required/>
-		<input type="hidden" name=":operation" value="import" />
-		<input type="hidden" name=":contentType" value="json" />
+		<div class="control-group">
+			<label class="control-label" for="node_name">node name</label>
+			<div class="controls">
+				<input id="node_name" type="text" name=":name" value="" required placeholder="node name"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="node_rtype">sling resource type</label>
+			<div class="controls">
+				<input id="node_rtype" type="text" name="sling:resourceType" value="" placeholder="resource type"/>
+			</div>
 
-		<select name=":content">
-			<option value="{ 'jcr:primaryType':'nt:unstructured' }">a Node</option>
-			<option value="{ 'jcr:primaryType':'sling:Folder' }">Sling Folder</option>
-			<option value="{ 'jcr:primaryType':'nt:file','jcr:content':{'jcr:primaryType':'nt:resource','jcr:data':'','jcr:mimeType':'text/plain'} }">Empty Text File</option>
-		</select>
+			<input type="hidden" name=":operation" value="import" />
+			<input type="hidden" name=":contentType" value="json" />
 
-		<INPUT TYPE="HIDDEN" NAME=":redirect" VALUE="<%=slingRequest.getRequestURL()%>" />
-		<INPUT TYPE="HIDDEN" NAME=":errorpage" VALUE="<%=slingRequest.getRequestURL()%>" />
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="node_type">node type</label>
+			<div class="controls">
+				<select name=":content" style="height:26px">
+					<option value="{ 'jcr:primaryType':'sling:Folder' }">Sling Folder</option>
+					<option value="{ 'jcr:primaryType':'nt:unstructured' }">a Node</option>
+					<option value="{ 'jcr:primaryType':'nt:file','jcr:content':{'jcr:primaryType':'nt:resource','jcr:data':'','jcr:mimeType':'text/plain'} }">Empty Text File</option>
+				</select>
+			<button class="btn btn-success pull-right" type="submit"><i class="icon-ok icon-white"></i></button>
+			</div>
 
-		<BUTTON TYPE="SUBMIT">Create Node</BUTTON>
+			<input type="hidden" name=":redirect" value="<%=slingRequest.getRequestURL()%>" />
+			<input type="hidden" name=":errorpage" value="<%=slingRequest.getRequestURL()%>" />
+
+		</div>
 	</fieldset>
-</FORM>
+</form>
 
-<FORM ID="UPLOADFORM" METHOD="POST" ACTION="<%= currentNode.getPath() %>" ENCTYPE="MULTIPART/FORM-DATA">
+<form id="UPLOADFORM" method="post" action="<%= currentNode.getPath() %>" enctype="multipart/form-data">
 	<fieldset>
-	<legend>Upload New Node</legend>
-		<INPUT TYPE="FILE" NAME="*"/>
+	<legend>Upload File</legend>
+		<br/>
+		<i class="icon-upload"></i>
+		<input class="btn" type="file" name="*"/>
 
-		<BUTTON TYPE="SUBMIT">Upload File</BUTTON>
-		<INPUT TYPE="HIDDEN" NAME=":redirect" VALUE="<%=slingRequest.getRequestURL()%>" />
-		<INPUT TYPE="HIDDEN" NAME=":errorpage" VALUE="<%=slingRequest.getRequestURL()%>" />
+		<button class="btn btn-success" type="submit"><i class="icon-ok icon-white"></i></button>
+		<input type="hidden" name=":redirect" value="<%=slingRequest.getRequestURL()%>" />
+		<input type="hidden" name=":errorpage" value="<%=slingRequest.getRequestURL()%>" />
 	</fieldset>
-</FORM>
+</form>
 
 <%
 	String error = request.getParameter("error");

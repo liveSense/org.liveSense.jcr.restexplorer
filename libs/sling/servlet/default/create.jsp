@@ -19,26 +19,18 @@
 <html>
 	<sling:include resource="<%=resource%>" resourceType="components/head" replaceSelectors="edit"/>
 	<body style="background-color:gray">
-    <div class="container-fluid">
+		<div class="container-fluid">
+			<div class="modal">
+				<div class="modal-header">
+    			<a class="close" href="<%= resource.getPath() + ".edit.html" %>">&times;</a>
+					<h3>Create Node in <a href="#"><%= resource.getPath() %></a></h3>
+ 				</div>
 
-	<div class="container-fluid">
-				<div class="modal">
-		<div class="modal-header">
-			<h3>Create Node in <a href="#"><%= resource.getPath() %></a></h3>
-  </div>
-
-  <div class="modal-body">
-
-			<sling:include resource="<%=resource%>" resourceType="components/breadcrumb" replaceSelectors="view"/>
-			<sling:include resource="<%=resource%>" resourceType="components/createnode" replaceSelectors="edit"/>
-
-	</div>
-  <div class="modal-footer">
-    <a href="<%= resource.getPath() + ".edit.html" %>" class="btn btn-primary">Dismiss</a>
-  </div>
-
-		</div>
-		</div>
+  			<div class="modal-body">
+					<sling:include resource="<%=resource%>" resourceType="components/breadcrumb" replaceSelectors="view"/>
+					<sling:include resource="<%=resource%>" resourceType="components/createnode" replaceSelectors="edit"/>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

@@ -60,7 +60,6 @@
 				<INPUT id="<%=name%>" TYPE="TEXT" NAME="<%=name%>" VALUE="<%=value%>" />
 				<span class="help-inline">
 					<div class="btn-group">
-					<BUTTON class="btn btn-success" TYPE="SUBMIT"><i class="icon-ok icon-white"></i></BUTTON>
 					<BUTTON class="btn btn-danger" TYPE="SUBMIT" NAME="<%=name%>" VALUE="" FORM="DELETE_PROPERTY_FORM"><i class="icon-trash icon-white"></i></BUTTON>
 					</div>
 				</span>
@@ -70,6 +69,7 @@
 				}
 			}
 		%>
+					<BUTTON class="btn btn-success" style="margin-left:409px" TYPE="SUBMIT"><i class="icon-ok icon-white"></i></BUTTON>
 		</fieldset>
 </FORM>
 
@@ -81,7 +81,7 @@
 			<INPUT TYPE="HIDDEN" NAME=":errorpage" VALUE="<%=slingRequest.getRequestURL()%>" />
 			<INPUT class="input-medium" TYPE="TEXT" placeholder="new property name" NAME=":propery_name" VALUE="" required/>
 			<INPUT style="margin-left:12px" TYPE="TEXT" placeholder="value" NAME=":propery_name@NameFrom" VALUE=""/>
-			<BUTTON class="btn btn-success" TYPE="SUBMIT"><i class="icon-ok icon-white"></i></BUTTON>
+			<BUTTON class="btn btn-success" style="margin-left:10px" TYPE="SUBMIT"><i class="icon-plus icon-white"></i> Add</BUTTON>
 		</div>
 	</fieldset>
 </FORM>
