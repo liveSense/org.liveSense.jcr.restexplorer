@@ -1,4 +1,4 @@
 RESTed
 ======
 
-REST-full editor for the Apache Sling
+REST-full editor for Apache Sling.
