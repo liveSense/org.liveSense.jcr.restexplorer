@@ -26,7 +26,7 @@ NodeIterator listNodes (Node currentNode) throws Exception {
 
 NodeIterator searchNodes (SlingHttpServletRequest req, String q) throws Exception {
 	String queryType = "JCR-SQL2";
-	String statement = "SELECT * FROM [nt:base] as N WHERE contains(N.*, 'ondrej')";//ISDESCENDANTNODE([/%])";
+	String statement = "SELECT * FROM [nt:base] as N WHERE contains(N.*, '"+q+"')";//ISDESCENDANTNODE([/%])";
 	Session session = req.getResourceResolver ().adaptTo (Session.class);
 	QueryManager queryManager = session.getWorkspace().getQueryManager ();
 	Query query = queryManager.createQuery (statement, queryType);
