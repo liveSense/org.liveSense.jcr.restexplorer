@@ -48,7 +48,7 @@
 			<div class="controls">
 				<select name=":content" style="height:26px">
 					<option value="{ 'jcr:primaryType':'sling:Folder' }">Sling Folder</option>
-					<option value="{ 'jcr:primaryType':'nt:unstructured' }">a Node</option>
+					<option value="{ 'jcr:primaryType':'nt:unstructured' }">Unstructured Node</option>
 					<option value="{ 'jcr:primaryType':'nt:file','jcr:content':{'jcr:primaryType':'nt:resource','jcr:data':'','jcr:mimeType':'text/plain'} }">Empty Text File</option>
 				</select>
 			<button class="btn btn-success" type="submit"><i class="icon-ok icon-white"></i></button>
