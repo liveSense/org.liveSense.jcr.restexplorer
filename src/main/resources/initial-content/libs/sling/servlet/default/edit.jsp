@@ -25,6 +25,9 @@
 		</div>
     <div class="container-fluid">
 <%
+	String query = request.getParameter("q");
+	if (query == null) query = "";
+
 	String error = request.getParameter("error");
 	if (error != null) {
 		%>
@@ -46,7 +49,7 @@
 					</div>
 					<span class="pull-right">
 					<div class="input-append">
-						<input type="text" name="q" class="input-small search-query">
+						<input type="text" name="q" class="input-small search-query" value="<%=query%>">
 						<button class="btn" type="submit"><i class="icon-search"></i></button>
 					</div>
 					</span>

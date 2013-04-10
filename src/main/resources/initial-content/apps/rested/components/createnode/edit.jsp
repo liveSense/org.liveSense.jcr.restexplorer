@@ -69,7 +69,7 @@
 		<input class="btn" type="file" name="*"/>
 
 		<button class="btn btn-success" type="submit"><i class="icon-ok icon-white"></i></button>
-		<input type="hidden" name=":redirect" value="<%=parentPath%>.edit.html" />
+		<input type="hidden" name=":redirect" value="<%=resource.getPath()%>.edit.html" />
 		<input type="hidden" name=":errorpage" value="<%=slingRequest.getRequestURL()%>" />
 	</fieldset>
 </form>

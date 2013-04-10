@@ -19,6 +19,18 @@
 <%@ taglib prefix="sling" uri="http://sling.apache.org/taglibs/sling/1.0" %><%
 %><%!
 
+String buildQuery (String query) {
+	if (query.indexOf("/") > 1) { //assume this is relative path
+		return "SELECT * FROM [nt:file] as N WHERE ISDESCENDANTNODE('/apps/"+query+"') or ISDESCENDANTNODE('/libs/"+query+"')";
+	}
+	else if (query.indexOf("/") == 0) { //assume this is absolute path
+		return "SELECT * FROM [nt:base] as N WHERE ISDESCENDANTNODE('"+query+"')";
+	}
+	else {
+		return "SELECT * FROM [nt:base] as N WHERE contains(N.*, '"+query+"')";
+	}
+}
+
 NodeIterator listNodes (Node currentNode) throws Exception {
 	NodeIterator children = currentNode.getNodes();
 	return children;
@@ -26,7 +38,7 @@ NodeIterator listNodes (Node currentNode) throws Exception {
 
 NodeIterator searchNodes (SlingHttpServletRequest req, String q) throws Exception {
 	String queryType = "JCR-SQL2";
-	String statement = "SELECT * FROM [nt:base] as N WHERE contains(N.*, '"+q+"')";//ISDESCENDANTNODE([/%])";
+	String statement = buildQuery (q);
 	Session session = req.getResourceResolver ().adaptTo (Session.class);
 	QueryManager queryManager = session.getWorkspace().getQueryManager ();
 	Query query = queryManager.createQuery (statement, queryType);
@@ -66,7 +78,12 @@ String suffix = slingRequest.getRequestPathInfo().getSuffix();
 			String type = node.getProperty("jcr:primaryType").getString();
 			String name = node.getName();
 			String path = node.getPath();
-			String rtype = "";
+			Node parent = node.getParent();
+
+			String ppath = "/";
+			if (parent != null) ppath = parent.getPath();
+
+			String rtype = null;
 			if (node.hasProperty("sling:resourceType")) rtype = node.getProperty("sling:resourceType").getString();
 
 			if (suffix != null) path = requestPath + path;
@@ -74,11 +91,20 @@ String suffix = slingRequest.getRequestPathInfo().getSuffix();
 	%>
 			<tr>
 				<td><i class="<%=iconForType(type)%>"></i></td>
-				<td><a href="<%=path%>"><%=name + (isFolder(type)?"/":"")%></a></td>
+				<td><a href="<%=path%>"><%=name + (isFolder(type)?"/":"")%></a>
+					<% if (q != null) { %>
+						<br/><%=ppath%> <a href="<%=ppath%>.edit.html"><i class="icon-circle-arrow-right"></i></a>
+					<% } %>
+				</td>
 				<td><%=type%></td>
-				<td><%=rtype%></td>
 				<td>
-					<div class="btn-group">
+					<% if (rtype != null) { %>
+						<%=rtype%> <a href="/.edit.html?q=<%=rtype%>"><i class="icon-search"></i></a>
+					<% } %>
+				</td>
+				<td>
+					<div class="btn-group pull-right">
+						<a class="btn btn-mini" href="<%=node.getPath()+".properties.html/"%>"><i class="icon-edit icon-white"></i></a>
 						<a class="btn btn-mini" href="<%=node.getPath()+".moveto.html/"%>"><i class="icon-arrow-right icon-white"></i></a>
 						<a class="btn btn-mini" href="<%=node.getPath()+".copyto.html/"%>"><i class="icon-plus icon-white"></i></a>
 						<a class="btn btn-mini" href="<%=node.getPath()+".remove.html"%>"><i class="icon-trash icon-white"></i></a>
