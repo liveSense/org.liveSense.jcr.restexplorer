@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><features name="liveSense-${liveSense.version}-jcr-restexplorer" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+	<feature name="liveSense-jcr-restexplorer" version="${liveSense.jcr.restexplorer.version}" description="liveSense jcr restexplorer">
+        <feature>liveSense-core-base</feature>
+		<bundle>mvn:com.github.livesense/org.liveSense.jcr.restexplorer/${liveSense.jcr.restexplorer.version}</bundle>
+	</feature>
+</features>
