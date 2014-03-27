@@ -26,6 +26,11 @@
 		<version>2-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
+	<scm>
+		<connection>scm:git:https://github.com/liveSense/org.liveSense.jcr.restexplorer.git</connection>
+		<developerConnection>scm:git:https://github.com/liveSense/org.liveSense.jcr.restexplorer.git</developerConnection>
+		<url>https://github.com/liveSense/org.liveSense.jcr.restexplorer</url>
+	</scm>
     
 	<artifactId>org.liveSense.jcr.restexplorer</artifactId>
 	<packaging>bundle</packaging>
